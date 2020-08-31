@@ -87,12 +87,10 @@ const Fermentables: React.SFC<FermentablesProps> = (props) => {
               id: parseInt(target.value),
             });
             if (active) {
-              console.log(active);
               setActiveFermentable(active.id);
               setActiveFermentableName(active.name);
 
               if (active.srmPrecise) {
-                console.log(active.srmPrecise);
                 setActiveSRM(active.srmPrecise);
               }
             }

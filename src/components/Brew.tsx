@@ -66,7 +66,7 @@ const Brew = () => {
               batchSize
               method
               srm
-              # ibus
+              ibus
               og
               hops
               hopTypes
@@ -104,7 +104,7 @@ const Brew = () => {
             <p>Batch Size: {brew.batchSize}</p>
             <p>Boil Time: {brew.boilTime}</p>
             <p>Method: {brew.method === 1 ? "Extract" : "All Grain"}</p>
-            {/* <p>IBUS: {brew.ibus > 0 ? brew.ibus.toFixed(0) : brew.ibus}</p> */}
+            <p>IBUS: {brew.ibus > 0 ? brew.ibus.toFixed(0) : brew.ibus}</p>
             <p>OG: {brew.og > 0 ? brew.og.toFixed(3) : brew.og}</p>
             <p>
               SRM: {brew.srm ? brew.srm.toFixed(0) : brew.srm}

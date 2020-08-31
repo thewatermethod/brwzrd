@@ -211,12 +211,11 @@ function New() {
       .then((res) => {
         if (res.status === 200) {
           //handle success
-
           return res.json();
         }
       })
       .then((json) => {
-        console.log(json.ref);
+        console.log(`The ref for our new brew is ${json.ref}`);
         setSuccess(true);
         setId(json.ref["@ref"].id);
       });

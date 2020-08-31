@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import {FermentableInterface} from "../interfaces/Fermentable";
 import {find} from "lodash";
+import {freemem} from "os";
 
 interface FermentableData {
   id: number;
@@ -8,14 +9,18 @@ interface FermentableData {
   name: string;
 }
 
-const useGravity = (recipe: FermentableInterface[] | []) => {
+const useGravity = (
+  recipe: FermentableInterface[] | [],
+  size: number = 5,
+  efficiency: number = 75
+) => {
   const [fermentables, setFermentables] = useState<[FermentableData] | []>([]);
   const [gravity, setGravity] = useState(0);
 
   const calculateGravity = (
     points: number,
-    size: number = 5,
-    efficiency: number = 75
+    size: number,
+    efficiency: number
   ) => {
     console.log(`Points: ${points}`);
 
@@ -55,19 +60,28 @@ const useGravity = (recipe: FermentableInterface[] | []) => {
 
     if (recipe && recipe.length > 0) {
       let points = 0;
-      // for each hop
+      // for each fermentable
       recipe.forEach((fermentable) => {
+        //find it
         const data = find(fermentables, {id: fermentable.fermentable});
 
+        // if it exists,
         if (data) {
           if (data.potential) {
+            // print out the potential gravity
             console.log(`${data.name} Potential: ${data.potential}`);
-            points += fermentable.amount * (data.potential - 1) * 1000;
+
+            // and calculate it
+            // if we have a potential in the API of 1.038, we are looking for 380 * amount
+            const prePoints = (data.potential - 1) * 1000; // first the conversion of the 1.038 number
+            const amountInPounds = fermentable.amount / 16; // and then we take our ounces and turn that into pounds
+
+            points += amountInPounds * prePoints;
           }
         }
       });
 
-      const newGravity = calculateGravity(points);
+      const newGravity = calculateGravity(points, size, efficiency);
 
       console.log(`OG: ${newGravity}`);
 

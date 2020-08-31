@@ -4,4 +4,5 @@ export interface HopInterface {
   type: number;
   time: number;
   alphaAcidMin: number;
+  id: number;
 }

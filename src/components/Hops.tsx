@@ -165,8 +165,6 @@ const Hops: React.SFC<HopsProps> = (props) => {
             const hops = find(props.data, {id: activeHops});
 
             if (hops) {
-              console.log(hops);
-
               name = hops?.name;
               if (hops.alphaAcidMin) {
                 aau = hops?.alphaAcidMin;
@@ -181,6 +179,7 @@ const Hops: React.SFC<HopsProps> = (props) => {
                 type: activeHopsType,
                 time: activeHopsTime,
                 alphaAcidMin: aau,
+                id: activeHops,
               },
             ];
 

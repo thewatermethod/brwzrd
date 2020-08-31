@@ -7,6 +7,9 @@ interface NumberInputProps {
   value: number;
   default?: number;
   className: string;
+  step?: string;
+  min?: string;
+  max?: string;
 }
 
 const NumberInput: React.SFC<NumberInputProps> = (props) => {
@@ -16,6 +19,12 @@ const NumberInput: React.SFC<NumberInputProps> = (props) => {
 
   if (!value && props.default) {
     value = props.default;
+  }
+
+  let step = "any";
+
+  if (props.step) {
+    step = props.step;
   }
 
   return (
@@ -32,6 +41,7 @@ const NumberInput: React.SFC<NumberInputProps> = (props) => {
         onChange={(e) => {
           onChangeHandler(parseFloat(e.target.value));
         }}
+        step={step}
       />
     </React.Fragment>
   );

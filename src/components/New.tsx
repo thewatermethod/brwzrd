@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {Link} from "react-router-dom";
 
 import BeerInfo from "./BeerInfo";
 import Fermentables from "./Fermentables";
@@ -29,6 +30,11 @@ function New() {
    * The same pattern follows for fermentables, hops, etc
    *
    * */
+
+  //
+
+  const [success, setSuccess] = useState(false);
+  const [id, setId] = useState("");
 
   // beer info hooks
 
@@ -116,31 +122,31 @@ function New() {
       // handle email error
     }
 
-    if (!brew.method || brew.method !== 0) {
+    if (!brew.method || brew.method === 0) {
       // handle method error
       setMethodError("error");
       return false;
     }
 
-    if (!brew.boilSize || brew.boilSize !== "") {
+    if (!brew.boilSize || brew.boilSize === "") {
       // handle boilSize error
       setBoilSizeError("error");
       return false;
     }
 
-    if (!brew.batchSize || brew.batchSize !== "") {
+    if (!brew.batchSize || brew.batchSize === "") {
       // handle boilSize error
       setBatchSizeError("error");
       return false;
     }
 
-    if (!brew.boilTime || brew.boilTime !== "") {
+    if (!brew.boilTime || brew.boilTime === "") {
       // handle boil time error
       setBoilTimeError("error");
       return false;
     }
 
-    if (!brew.efficiency || brew.efficiency !== "") {
+    if (!brew.efficiency || brew.efficiency === "") {
       // handle efficiency error
       setEfficiencyError("error");
       return false;
@@ -158,7 +164,7 @@ function New() {
       return false;
     }
 
-    if (brew.fermentables || brew.fermentables.length === 0) {
+    if (!brew.fermentables || brew.fermentables.length === 0) {
       // handle fermentables error
       setFermentablesError("error");
       return false;
@@ -175,6 +181,7 @@ function New() {
       method: method,
       boilSize: boilSize,
       boilTime: boilTime,
+      batchSize: batchSize,
       efficiency: efficiency,
       hops: hops,
       yeast: yeast,
@@ -193,116 +200,131 @@ function New() {
       return;
     }
 
+    //todo -> this needs to be moved into Netlify functions
     fetch(`http://localhost:3001/save`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(brew),
-    });
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          //handle success
+
+          return res.json();
+        }
+      })
+      .then((json) => {
+        console.log(json.ref);
+        setSuccess(true);
+        setId(json.ref["@ref"].id);
+      });
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1 className="main-heading">BRWZRD</h1>
-      </header>
-      <main>
-        {/* Derived info that will show the beer's color, ibus, etc*/}
-        <div className="card derived-info">
-          <span>OG: {OG.toFixed(3)}</span> |{" "}
-          <span>
-            IBU: {IBUS.toFixed(0)} | SRM:{" "}
-            <span
-              className="srm-preview"
-              style={{
-                backgroundColor: SRM.hex,
-                display: "inline-block",
-                height: "20px",
-                marginRight: "4px",
-                width: "20px",
-              }}
+    <main>
+      {success ? (
+        <div>
+          <Link to={`/brew/${id}`}>View your new brew</Link>
+        </div>
+      ) : (
+        <React.Fragment>
+          {/* Derived info that will show the beer's color, ibus, etc*/}
+          <div className="card derived-info">
+            <span>OG: {OG.toFixed(3)}</span> |{" "}
+            <span>
+              IBU: {IBUS.toFixed(0)} | SRM:{" "}
+              <span
+                className="srm-preview"
+                style={{
+                  backgroundColor: SRM.hex,
+                  display: "inline-block",
+                  height: "20px",
+                  marginRight: "4px",
+                  width: "20px",
+                }}
+              />
+              {SRM.srm.toFixed(0)}
+            </span>
+          </div>
+
+          {/* nuts and bolts info of the beer */}
+          <BeerInfo
+            beerName={beerName}
+            setBeerName={setBeerName}
+            author={author}
+            setAuthor={setAuthor}
+            style={style}
+            setStyle={setStyle}
+            method={method}
+            setMethod={setMethod}
+            boilSize={boilSize}
+            setBoilSize={setBoilSize}
+            batchSize={batchSize}
+            setBatchSize={setBatchSize}
+            boilTime={boilTime}
+            setBoilTime={setBoilTime}
+            efficiency={efficiency}
+            setEfficiency={setEfficiency}
+            beerNameError={beerNameError}
+            authorError={authorError}
+            methodError={methodError}
+            boilSizeError={boilSizeError}
+            batchSizeError={batchSizeError}
+            boilTimeError={boilTimeError}
+            efficiencyError={efficiencyError}
+          />
+
+          <div className="grid two-col">
+            {/* all the fermentables (mainly barley malt*/}
+            <Fermentables
+              fermentables={fermentables}
+              setFermentables={setFermentables}
+              data={fermentablesData}
+              fermentablesError={fermentablesError}
             />
-            {SRM.srm.toFixed(0)}
-          </span>
-        </div>
 
-        {/* nuts and bolts info of the beer */}
-        <BeerInfo
-          beerName={beerName}
-          setBeerName={setBeerName}
-          author={author}
-          setAuthor={setAuthor}
-          style={style}
-          setStyle={setStyle}
-          method={method}
-          setMethod={setMethod}
-          boilSize={boilSize}
-          setBoilSize={setBoilSize}
-          batchSize={batchSize}
-          setBatchSize={setBatchSize}
-          boilTime={boilTime}
-          setBoilTime={setBoilTime}
-          efficiency={efficiency}
-          setEfficiency={setEfficiency}
-          beerNameError={beerNameError}
-          authorError={authorError}
-          methodError={methodError}
-          boilSizeError={boilSizeError}
-          batchSizeError={batchSizeError}
-          boilTimeError={boilTimeError}
-          efficiencyError={efficiencyError}
-        />
+            {/* all the hops */}
+            <Hops
+              hops={hops}
+              setHops={setHops}
+              data={hopsData}
+              hopsError={hopsError}
+            />
 
-        <div className="grid two-col">
-          {/* all the fermentables (mainly barley malt*/}
-          <Fermentables
-            fermentables={fermentables}
-            setFermentables={setFermentables}
-            data={fermentablesData}
-            fermentablesError={fermentablesError}
+            {/* the yeast*/}
+            <Yeast
+              yeast={yeast}
+              setYeast={setYeast}
+              data={yeastData}
+              yeastError={yeastError}
+            />
+
+            {/* other ingredients */}
+            <OtherAdditions
+              activeOther={activeOther}
+              setActiveOther={setActiveOther}
+              activeOtherAmount={activeOtherAmount}
+              setActiveOtherAmount={setActiveOtherAmount}
+              activeOtherTime={activeOtherTime}
+              setActiveOtherTime={setActiveOtherTime}
+              others={others}
+              setOthers={setOthers}
+            />
+          </div>
+
+          <BeerNotes
+            image={image}
+            setImage={setImage}
+            notes={notes}
+            setNotes={setNotes}
           />
 
-          {/* all the hops */}
-          <Hops
-            hops={hops}
-            setHops={setHops}
-            data={hopsData}
-            hopsError={hopsError}
-          />
-
-          {/* the yeast*/}
-          <Yeast
-            yeast={yeast}
-            setYeast={setYeast}
-            data={yeastData}
-            yeastError={yeastError}
-          />
-
-          {/* other ingredients */}
-          <OtherAdditions
-            activeOther={activeOther}
-            setActiveOther={setActiveOther}
-            activeOtherAmount={activeOtherAmount}
-            setActiveOtherAmount={setActiveOtherAmount}
-            activeOtherTime={activeOtherTime}
-            setActiveOtherTime={setActiveOtherTime}
-            others={others}
-            setOthers={setOthers}
-          />
-        </div>
-
-        <BeerNotes
-          image={image}
-          setImage={setImage}
-          notes={notes}
-          setNotes={setNotes}
-        />
-
-        <button onClick={saveBrew}>Save brew</button>
-      </main>
-      <footer></footer>
-    </div>
+          <button onClick={saveBrew}>Save brew</button>
+        </React.Fragment>
+      )}
+    </main>
   );
 }
 

@@ -138,6 +138,7 @@ const OtherAdditions: React.SFC<OtherAdditionsProps> = (props) => {
                 amount: props.activeOtherAmount,
                 name: other.name,
                 time: props.activeOtherTime,
+                id: props.activeOther,
               },
             ];
 

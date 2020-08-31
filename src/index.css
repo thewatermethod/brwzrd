@@ -24,8 +24,20 @@ h4 {
   font-family: "Fredoka One", cursive;
 }
 
-h2 {
+.fermentables h2 {
+  text-shadow: 2px 2px 1px #d91414;
+}
+
+.hops h2 {
+  text-shadow: 2px 2px 1px #3bd914;
+}
+
+.yeast h2 {
   text-shadow: 2px 2px 1px #9637bd;
+}
+
+.other h2 {
+  text-shadow: 2px 2px 1px #137ec4;
 }
 
 table,

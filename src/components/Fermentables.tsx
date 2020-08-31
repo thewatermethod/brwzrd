@@ -18,6 +18,8 @@ const Fermentables: React.SFC<FermentablesProps> = (props) => {
   const [activeFermentableAmount, setActiveFermentableAmount] = useState<
     number
   >(0);
+
+  const [activeFermentableName, setActiveFermentableName] = useState("");
   const [activeSRM, setActiveSRM] = useState(0);
   const [activeUnit, setActiveUnit] = useState(0);
   const [typeError, setTypeError] = useState("");
@@ -87,6 +89,8 @@ const Fermentables: React.SFC<FermentablesProps> = (props) => {
             if (active) {
               console.log(active);
               setActiveFermentable(active.id);
+              setActiveFermentableName(active.name);
+
               if (active.srmPrecise) {
                 console.log(active.srmPrecise);
                 setActiveSRM(active.srmPrecise);
@@ -144,6 +148,7 @@ const Fermentables: React.SFC<FermentablesProps> = (props) => {
                 amount: amount,
                 fermentable: activeFermentable,
                 srm: activeSRM,
+                name: activeFermentableName,
               },
             ];
 
@@ -157,6 +162,7 @@ const Fermentables: React.SFC<FermentablesProps> = (props) => {
             // zero out current
             setActiveFermentable(0);
             setActiveFermentableAmount(0);
+            setActiveFermentableName("");
             setActiveUnit(0);
             setTypeError("");
             setAmountError("");

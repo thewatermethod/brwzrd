@@ -1,0 +1,13 @@
+.masthead {
+  align-items: flex-end;
+  background-position: cover;
+  display: flex;
+  min-height: 50vh;
+  justify-content: center;
+}
+
+.masthead h2 {
+  color: white;
+  font-size: 3em;
+  text-shadow: 2px 2px 2px black;
+}

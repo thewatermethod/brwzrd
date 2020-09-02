@@ -79,7 +79,7 @@ const OtherAdditions: React.SFC<OtherAdditionsProps> = (props) => {
         </table>
       ) : null}
 
-      <fieldset>
+      <div>
         <Select
           className={nameError}
           label="Add Other Ingredient"
@@ -158,7 +158,7 @@ const OtherAdditions: React.SFC<OtherAdditionsProps> = (props) => {
           }}>
           Add to recipe
         </button>
-      </fieldset>
+      </div>
     </div>
   );
 };

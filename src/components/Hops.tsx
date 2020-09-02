@@ -73,7 +73,7 @@ const Hops: React.SFC<HopsProps> = (props) => {
         </table>
       ) : null}
 
-      <fieldset>
+      <div>
         <Select
           className={nameError}
           label="Add Hops"
@@ -200,7 +200,7 @@ const Hops: React.SFC<HopsProps> = (props) => {
           }}>
           Add to brew
         </button>
-      </fieldset>
+      </div>
     </div>
   );
 };

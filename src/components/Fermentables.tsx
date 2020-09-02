@@ -76,7 +76,7 @@ const Fermentables: React.SFC<FermentablesProps> = (props) => {
         </table>
       ) : null}
 
-      <fieldset>
+      <div>
         <Select
           className={typeError}
           label="Add Fermentable"
@@ -167,7 +167,7 @@ const Fermentables: React.SFC<FermentablesProps> = (props) => {
           }}>
           Add to grain bill
         </button>
-      </fieldset>
+      </div>
     </div>
   );
 };

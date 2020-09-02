@@ -1,7 +1,6 @@
 import {useEffect, useState} from "react";
 import {FermentableInterface} from "../interfaces/Fermentable";
 import {find} from "lodash";
-import {freemem} from "os";
 
 interface FermentableData {
   id: number;
@@ -87,7 +86,7 @@ const useGravity = (
 
       setGravity(newGravity);
     }
-  }, [recipe, fermentables]);
+  }, [recipe, fermentables, efficiency, size]);
   return gravity;
 };
 

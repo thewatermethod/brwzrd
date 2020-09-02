@@ -224,9 +224,9 @@ function New() {
   return (
     <main>
       {success ? (
-        <div>
+        <nav>
           <Link to={`/brew/${id}`}>View your new brew</Link>
-        </div>
+        </nav>
       ) : (
         <React.Fragment>
           {/* Derived info that will show the beer's color, ibus, etc*/}

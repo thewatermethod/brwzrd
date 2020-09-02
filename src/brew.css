@@ -2,12 +2,31 @@
   align-items: flex-end;
   background-position: cover;
   display: flex;
-  min-height: 50vh;
   justify-content: center;
 }
 
+.masthead.has-image {
+  min-height: 50vh;
+}
+
 .masthead h2 {
-  color: white;
   font-size: 3em;
+}
+
+.masthead.has-image h2 {
+  color: white;
   text-shadow: 2px 2px 2px black;
+}
+
+h3 {
+  text-align: center;
+}
+
+.brew-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+table {
+  margin: 3em 0;
 }

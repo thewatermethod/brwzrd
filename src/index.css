@@ -20,7 +20,8 @@ body {
 h1,
 h2,
 h3,
-h4 {
+h4,
+nav {
   font-family: "Fredoka One", cursive;
 }
 
@@ -141,4 +142,14 @@ input.error {
 input.error,
 select.error {
   border: 1px solid red;
+}
+
+nav {
+  flex-direction: column;
+}
+
+.dark-mode {
+  position: absolute;
+  top: 0;
+  right: 20px;
 }

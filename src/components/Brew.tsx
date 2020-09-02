@@ -94,13 +94,18 @@ const Brew = () => {
       {brew ? (
         <div>
           <div
-            className="masthead"
-            style={{
-              backgroundImage: `url(${brew.image})`,
-            }}>
+            className={`masthead ${brew.image ? "has-image" : "no-image"}`}
+            style={
+              brew.image
+                ? {
+                    backgroundImage: `url(${brew.image})`,
+                  }
+                : {}
+            }>
             <h2>{brew.name}</h2>
           </div>
-          <div>
+          <h3>Details</h3>
+          <div className="brew-details">
             <p>Batch Size: {brew.batchSize}</p>
             <p>Boil Time: {brew.boilTime}</p>
             <p>Method: {brew.method === 1 ? "Extract" : "All Grain"}</p>
@@ -112,15 +117,16 @@ const Brew = () => {
                 style={{
                   backgroundColor: brew.hex,
                   display: "inline-block",
-                  height: "40px",
-                  width: "40px",
+                  height: "1em",
+                  marginLeft: "1em",
+                  width: "3em",
                 }}></span>
             </p>
             <p>{brew.style}</p>
           </div>
           <div>
             <div>
-              <h2>Ingredients</h2>
+              <h3>Ingredients</h3>
               <table>
                 <caption>Fermentables</caption>
                 <thead>

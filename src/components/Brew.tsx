@@ -6,8 +6,6 @@ import {gql} from "@apollo/client";
 
 import "../css/brew.css";
 
-import secret from "./secret";
-
 interface Brewterface {
   name: string;
   image: string;
@@ -45,7 +43,7 @@ const Brew = () => {
       return {
         headers: {
           ...headers,
-          authorization: `Bearer ${secret.token}`,
+          authorization: `Bearer ${process.env.FAUNA_TOKEN}`,
         },
       };
     });

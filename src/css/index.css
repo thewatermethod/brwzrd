@@ -2,7 +2,7 @@
 * default reset
 */
 
-@import "./css/mvp.css";
+@import "./mvp.css";
 
 /**
 * additional reset
@@ -20,8 +20,7 @@ body {
 h1,
 h2,
 h3,
-h4,
-nav {
+h4 {
   font-family: "Fredoka One", cursive;
 }
 
@@ -77,7 +76,7 @@ fieldset {
 * Grid layout
 */
 
-@import "./css/grid.css";
+@import "./grid.css";
 
 /**
 * Form errors
@@ -125,6 +124,11 @@ input.error {
   z-index: 100000;
 }
 
+/***
+*
+* Vertical field wrap layout
+*/
+
 .vertical-field-wrap {
   align-items: center;
   display: flex;
@@ -138,17 +142,25 @@ input.error {
   margin: 0;
 }
 
+/**
+* misc overrides
+*/
+
 input.error,
 select.error {
   border: 1px solid red;
 }
 
 nav {
-  flex-direction: column;
+  margin-bottom: 0;
 }
 
 .dark-mode {
   position: absolute;
   top: 0;
   right: 20px;
+}
+
+.App-header a {
+  color: var(--color);
 }

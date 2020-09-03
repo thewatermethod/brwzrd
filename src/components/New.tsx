@@ -1,11 +1,11 @@
 import React, {useState} from "react";
-import {Link} from "react-router-dom";
 
 import BeerInfo from "./BeerInfo";
 import Fermentables from "./Fermentables";
 import Hops from "./Hops";
 import Yeast from "./Yeast";
 import OtherAdditions from "./OtherAdditions";
+import Success from "./Success";
 
 import {useOptions} from "./hooks/useOptions";
 import {useIBU} from "./hooks/useIBU";
@@ -224,9 +224,7 @@ function New() {
   return (
     <main>
       {success ? (
-        <nav>
-          <Link to={`/brew/${id}`}>View your new brew</Link>
-        </nav>
+        <Success id={id} />
       ) : (
         <React.Fragment>
           {/* Derived info that will show the beer's color, ibus, etc*/}

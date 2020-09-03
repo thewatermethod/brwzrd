@@ -4,7 +4,7 @@ import {ApolloClient, createHttpLink, InMemoryCache} from "@apollo/client";
 import {setContext} from "@apollo/client/link/context";
 import {gql} from "@apollo/client";
 
-import "../brew.css";
+import "../css/brew.css";
 
 import secret from "./secret";
 

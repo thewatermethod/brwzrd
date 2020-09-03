@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import New from "./components/New";
 import Brew from "./components/Brew";
 import Landing from "./components/Landing";
+import About from "./components/About";
 
 import {ReactComponent as Moon} from "./moon.svg";
 
@@ -59,6 +60,7 @@ const App = () => {
           </h1>
           <nav>
             <Link to="/new">Create a new brew</Link>
+            <Link to="/about">About this site</Link>
           </nav>
           <button onClick={switchColorMode} className="dark-mode">
             <Moon />
@@ -75,6 +77,9 @@ const App = () => {
             </Route>
             <Route exact path="/brew/:id">
               <Brew />
+            </Route>
+            <Route exact path="/about">
+              <About />
             </Route>
           </Switch>
         </div>

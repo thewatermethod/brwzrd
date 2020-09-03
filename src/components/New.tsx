@@ -111,6 +111,7 @@ function New() {
     setAuthorError("");
 
     // this is a very long regex I found online that matches email strings
+    // eslint-disable-next-line
     const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     const r = new RegExp(regex);

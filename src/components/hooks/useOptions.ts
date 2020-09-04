@@ -12,7 +12,7 @@ const useOptions = (
   useEffect(() => {
     async function fetchResource(resource: string) {
       console.log(`loading ${resource} from api...\n`);
-      const r = await fetch(`http://localhost:3001/${resource}`);
+      const r = await fetch(`/.netlify/functions/${resource}`);
       const d = r.json();
 
       return d;

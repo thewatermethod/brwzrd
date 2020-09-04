@@ -20,8 +20,15 @@ body {
 h1,
 h2,
 h3,
-h4 {
+h4,
+.App-header nav {
   font-family: "Fredoka One", cursive;
+}
+
+.card h2,
+.App-header nav a {
+  letter-spacing: 1ch;
+  text-transform: uppercase;
 }
 
 .fermentables h2 {
@@ -146,6 +153,18 @@ input.error {
 * misc overrides
 */
 
+.main-heading {
+  margin: 0;
+}
+
+.main-heading a {
+  display: block;
+}
+
+.main-heading img {
+  width: 100%;
+}
+
 input.error,
 select.error {
   border: 1px solid red;
@@ -163,4 +182,9 @@ nav {
 
 .App-header a {
   color: var(--color);
+}
+
+.App-header nav a {
+  letter-spacing: 1ch;
+  text-transform: uppercase;
 }

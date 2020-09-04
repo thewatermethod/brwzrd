@@ -3,17 +3,19 @@ import React from "react";
 const About = () => {
   return (
     <main>
-      <h2>Hey there</h2>
+      <h1 className="page-title">About this site</h1>
       <p>
-        <strong>
-          If boring technical stuff isn't your jam, you may want to move on
-          friend.
-        </strong>
+        <a href="https://github.com/thewatermethod/brwzrd">
+          Browse the code on Github
+        </a>
       </p>
-      <p>This site was created with "create-react-app."</p>
-      <p>I used Typescript and GraphQL.</p>
-      <p>Brews are stored on Fauna DB.</p>
-      <p>The backend/api (such as it is) is serverless Node functions.</p>
+      <ul>
+        <li>This site was created with "create-react-app."</li>
+        <li>I used Typescript and GraphQL.</li>
+        <li>Brews are stored on Fauna DB.</li>
+        <li>The backend/api runs on serverless node functions.</li>
+        <li>Netlify makes all this possible!</li>
+      </ul>
     </main>
   );
 };

@@ -55,12 +55,11 @@ body {
   line-height: var(--line-height);
   margin: 0;
   overflow-x: hidden;
-  padding: 1rem 0;
 }
 
 footer,
-header,
-main {
+main,
+nav {
   margin: 0 auto;
   max-width: var(--width-content);
   padding: 2rem 1rem;

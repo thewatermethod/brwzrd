@@ -7,6 +7,8 @@ import Landing from "./components/Landing";
 import About from "./components/About";
 
 import {ReactComponent as Moon} from "./moon.svg";
+import lightWizard from "./BRWZRD1.jpg";
+import darkWizard from "./BRWZRD2.jpg";
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -56,7 +58,10 @@ const App = () => {
       <Router>
         <header className="App-header">
           <h1 className="main-heading">
-            <Link to="/">BRWZRD</Link>
+            <Link to="/">
+              <img src={darkMode ? lightWizard : darkWizard} alt="" />
+              <span className="screen-reader-text">BRWZRD</span>
+            </Link>
           </h1>
           <nav>
             <Link to="/new">Create a new brew</Link>
@@ -70,7 +75,7 @@ const App = () => {
         <div>
           <Switch>
             <Route exact path="/">
-              <Landing />
+              <Landing darkMode={darkMode} />
             </Route>
             <Route exact path="/new">
               <New />

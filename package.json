@@ -16,9 +16,11 @@
     "@types/react-dom": "^16.9.0",
     "@types/react-router-dom": "^5.1.5",
     "axios": "^0.19.2",
+    "cloudinary": "^1.23.0",
     "draft-js": "^0.11.7",
     "graphql": "^15.3.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.20",
+    "netlify-lambda": "^2.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-dropzone": "^11.0.2",
@@ -29,6 +31,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "functions": "netlify-lambda build functions/yeast && netlify-lambda build functions/hops && netlify-lambda build functions/fermentable && netlify-lambda build functions/handleImageUpload",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

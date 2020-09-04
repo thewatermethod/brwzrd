@@ -175,6 +175,9 @@ nav {
 }
 
 .dark-mode {
+  border: 0;
+  background: transparent;
+  color: white;
   position: absolute;
   top: 0;
   right: 20px;

@@ -7,6 +7,8 @@ import Landing from "./components/Landing";
 import About from "./components/About";
 
 import {ReactComponent as Moon} from "./moon.svg";
+import {ReactComponent as Sun} from "./sun.svg";
+
 import lightWizard from "./BRWZRD1.jpg";
 import darkWizard from "./BRWZRD2.jpg";
 
@@ -68,7 +70,7 @@ const App = () => {
             <Link to="/about">About this site</Link>
           </nav>
           <button onClick={switchColorMode} className="dark-mode">
-            <Moon />
+            {darkMode ? <Moon /> : <Sun />}
           </button>
         </header>
 

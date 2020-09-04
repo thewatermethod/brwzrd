@@ -16,11 +16,10 @@ exports.handler = async (event, context) => {
     //     console.log(error);
     //   }
 
-      return {
-        statusCode: 200,
-        body: JSON.stringify({message: "Function invoked"}),
-      }
-    }
+    return {
+      statusCode: 200,
+      body: JSON.stringify({message: "Function invoked"}),
+    };
   } catch (err) {
     return {statusCode: 500, body: err.toString()};
   }

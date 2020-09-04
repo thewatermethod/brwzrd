@@ -19,21 +19,21 @@ module.exports.handler = serverless(app);
 //   api_secret: process.env.CLOUDINARY_API_SECRET,
 // });
 
-// Docs on event and context https://www.netlify.com/docs/functions/#the-handler-method
-exports.handler = async (event, context) => {
-  try {
-    // const file = req.file;
+// // Docs on event and context https://www.netlify.com/docs/functions/#the-handler-method
+// exports.handler = async (event, context) => {
+//   try {
+//     // const file = req.file;
 
-    // cloudinary.uploader.upload(file.path, function (error, result) {
-    //   if (error) {
-    //     console.log(error);
-    //   }
+//     // cloudinary.uploader.upload(file.path, function (error, result) {
+//     //   if (error) {
+//     //     console.log(error);
+//     //   }
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({message: "Function invoked"}),
-    };
-  } catch (err) {
-    return {statusCode: 500, body: err.toString()};
-  }
-};
+//     return {
+//       statusCode: 200,
+//       body: JSON.stringify({message: "Function invoked"}),
+//     };
+//   } catch (err) {
+//     return {statusCode: 500, body: err.toString()};
+//   }
+// };

@@ -35,7 +35,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "functions": "netlify-lambda build functions/yeast && netlify-lambda build functions/hops && netlify-lambda build functions/fermentable && netlify-lambda build functions/handleImageUpload",
+    "build-functions": "netlify-lambda build functions/yeast && netlify-lambda build functions/hops && netlify-lambda build functions/fermentable && netlify-lambda build functions/handleImageUpload",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

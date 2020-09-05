@@ -34,8 +34,6 @@ const Brew = () => {
 
   let {id} = useParams();
 
-  alert(process.env.FAUNA_GQL);
-
   if (!brew) {
     const httpLink = createHttpLink({
       uri: "https://graphql.fauna.com/graphql",
@@ -45,7 +43,7 @@ const Brew = () => {
       return {
         headers: {
           ...headers,
-          authorization: `Bearer ${process.env.FAUNA_GQL}`,
+          authorization: `Bearer ${process.env.REACT_APP_FAUNA}`,
         },
       };
     });
@@ -160,7 +158,7 @@ const Brew = () => {
                   {brew.hops.map((h, i) => {
                     const type = brew.hopTypes[i] === 1 ? "Whole" : "Pellet";
                     return (
-                      <tr>
+                      <tr key={i}>
                         <td>{h}</td>
                         <td>{type}</td>
                         <td>{brew.hopTimes[i]}</td>
@@ -202,7 +200,7 @@ const Brew = () => {
                 <tbody>
                   {brew.others.map((o, i) => {
                     return (
-                      <tr>
+                      <tr key={i}>
                         <td>{o}</td>
                         <td>{brew.otherAmounts[i]} lbs</td>
                         <td>{brew.otherTimes[i]} </td>

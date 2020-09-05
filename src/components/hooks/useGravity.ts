@@ -38,7 +38,7 @@ const useGravity = (
 
   useEffect(() => {
     async function fetchMentables() {
-      const r = await fetch(`http://localhost:3001/fermentable`);
+      const r = await fetch(`/.netlify/functions/fermentable`);
       const h = r.json();
 
       return h;

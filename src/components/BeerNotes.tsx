@@ -1,7 +1,5 @@
-import React, {useCallback, Dispatch, SetStateAction} from "react";
+import React, {Dispatch, SetStateAction} from "react";
 import {Editor} from "@tinymce/tinymce-react";
-import {useDropzone} from "react-dropzone";
-import axios from "axios";
 import Upload from "../components/bare/Upload";
 
 interface FileWithPath extends File {
@@ -21,30 +19,6 @@ const BeerNotes: React.SFC<BeerNotesProps> = (props) => {
   const handleEditorChange = (content: string) => {
     setNotes(content);
   };
-
-  const onDrop = useCallback(
-    (acceptedFiles: FileWithPath[]) => {
-      const file = acceptedFiles[0];
-
-      let formData = new FormData();
-      formData.append("image", file);
-
-      axios
-        .post(`http://localhost:3001/upload`, formData, {
-          headers: {
-            "Content-type": "multipart/form-data",
-          },
-        })
-        .then((res) => {
-          setImage(res.data.url);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
-    [setImage]
-  );
-  const {getRootProps, getInputProps} = useDropzone({onDrop});
 
   return (
     <div className="card brew-settings">
@@ -69,7 +43,7 @@ const BeerNotes: React.SFC<BeerNotesProps> = (props) => {
         onEditorChange={handleEditorChange}
       />
 
-      <Upload image={props.image} setImage={props.setImage} />
+      <Upload image={image} setImage={setImage} />
     </div>
   );
 };

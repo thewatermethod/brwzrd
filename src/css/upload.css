@@ -1,0 +1,12 @@
+.upload-widget {
+  align-items: center;
+  background: transparent;
+  border: 5px dashed cadetblue;
+  color: var(--color);
+  display: flex;
+  justify-content: center;
+  margin: 1em auto;
+  max-width: 100%;
+  min-height: 25vh;
+  width: 100%;
+}

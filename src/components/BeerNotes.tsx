@@ -2,6 +2,7 @@ import React, {useCallback, Dispatch, SetStateAction} from "react";
 import {Editor} from "@tinymce/tinymce-react";
 import {useDropzone} from "react-dropzone";
 import axios from "axios";
+import Upload from "../components/bare/Upload";
 
 interface FileWithPath extends File {
   path?: string;
@@ -68,28 +69,7 @@ const BeerNotes: React.SFC<BeerNotesProps> = (props) => {
         onEditorChange={handleEditorChange}
       />
 
-      <div
-        style={{
-          alignItems: "center",
-          border: "5px dashed cadetblue",
-          display: "flex",
-          justifyContent: "center",
-          margin: "1em auto",
-          minHeight: "25vh",
-          maxWidth: "100%",
-        }}
-        {...getRootProps({accept: "image/*", multiple: false})}>
-        <input {...getInputProps()} />
-        {image ? (
-          <img
-            src={image}
-            alt="your label"
-            style={{display: "block", margin: "1em auto", maxWidth: "67%"}}
-          />
-        ) : (
-          <p>Click or drag to add label art</p>
-        )}
-      </div>
+      <Upload image={props.image} setImage={props.setImage} />
     </div>
   );
 };

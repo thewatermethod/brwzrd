@@ -202,7 +202,7 @@ function New() {
     }
 
     //todo -> this needs to be moved into Netlify functions
-    fetch(`http://localhost:3001/save`, {
+    fetch(`/.netlify/functions/saveBrew`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",

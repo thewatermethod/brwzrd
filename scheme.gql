@@ -1,0 +1,25 @@
+type Brew {
+  author: String!
+  batchSize: Float
+  boilSize: Float!
+  boilTime: Int!
+  efficiency: Int!
+  fermentables: [String]
+  fermentableAmounts: [Int]
+  ibus: Float!
+  image: String!
+  method: Int!
+  name: String!
+  notes: String!
+  og: Float!
+  srm: Float!
+  hex: String!
+  style: String!
+  hops: [String]
+  hopTypes: [Int]
+  hopTimes: [Int]
+  others: [String]
+  otherAmounts: [Float]
+  otherTimes: [Time]
+  yeast: [String]
+}

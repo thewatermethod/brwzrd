@@ -34,6 +34,8 @@ const Brew = () => {
 
   let {id} = useParams();
 
+  alert(process.env.FAUNA_GQL);
+
   if (!brew) {
     const httpLink = createHttpLink({
       uri: "https://graphql.fauna.com/graphql",
@@ -43,7 +45,7 @@ const Brew = () => {
       return {
         headers: {
           ...headers,
-          authorization: `Bearer ${process.env.FAUNA_TOKEN}`,
+          authorization: `Bearer ${process.env.FAUNA_GQL}`,
         },
       };
     });

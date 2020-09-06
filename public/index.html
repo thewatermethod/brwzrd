@@ -50,31 +50,5 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-
-    <script type="text/javascript">
-      window.addEventListener("DOMContentLoaded", () => {
-        if (document.getElementById("upload_widget")) {
-          var myWidget = cloudinary.createUploadWidget(
-            {
-              cloudName: "dzkwjehx6",
-              uploadPreset: "wx85xhyj",
-            },
-            (error, result) => {
-              if (!error && result && result.event === "success") {
-                console.log("Done! Here is the image info: ", result.info);
-              }
-            }
-          );
-
-          document.getElementById("upload_widget").addEventListener(
-            "click",
-            function () {
-              myWidget.open();
-            },
-            false
-          );
-        }
-      });
-    </script>
   </body>
 </html>

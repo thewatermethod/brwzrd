@@ -17,7 +17,7 @@ const Preview: React.SFC<PreviewProps> = (props) => {
     backgroundColor: "lightsteelblue",
   };
 
-  if (props.image != "") {
+  if (props.image !== "") {
     stylings.backgroundImage = `url(${props.image})`;
     previewClass = "preview has-image";
   }

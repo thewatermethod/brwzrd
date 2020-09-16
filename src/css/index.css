@@ -195,3 +195,19 @@ nav {
   letter-spacing: 1ch;
   text-transform: uppercase;
 }
+
+@media (max-width: 900px) {
+  .App-header nav {
+    flex-direction: column;
+  }
+  .App-header nav a {
+    margin: 1em auto;
+  }
+  .dark-mode {
+    background: purple;
+    bottom: 0;
+    color: white;
+    top: auto;
+    right: auto;
+  }
+}

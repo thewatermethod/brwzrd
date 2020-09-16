@@ -1,0 +1,37 @@
+.preview {
+  color: white;
+  display: flex;
+  min-height: 300px;
+  position: relative;
+}
+
+.preview a {
+  align-items: center;
+  color: white;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.preview a h3 {
+  font-family: sans-serif;
+  text-shadow: 1px 1px 1px black;
+}
+
+.preview.has-image a {
+  background: rgba(1, 1, 1, 0.5);
+}
+
+.preview p {
+  background-color: whitesmoke;
+  color: black;
+  padding: 0;
+  margin: 0;
+  width: 50%;
+  text-align: center;
+  text-transform: uppercase;
+
+  /*position the element*/
+  position: absolute;
+  top: 0;
+}

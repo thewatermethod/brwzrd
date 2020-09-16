@@ -24,3 +24,7 @@ type Brew {
   otherTimes: [Time]
   yeast: [String]
 }
+
+type Query {
+  LastThreeBrews: [Brew!]
+}
